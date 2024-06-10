@@ -27,6 +27,24 @@ class ProductController extends Controller
         return redirect()->back()->with('succes', 'Kosárba');
     }
 
+    function updateCart(Request $request) {
+        $cart = $request->session()->get('cart', []);
+
+        if ($request->has('update_item')) {
+            $itemKey = $request->input('update_item');
+            $qtty = $request->input("items.$itemKey.qtty");
+
+            if (isset($cart[$itemKey])) {
+                $cart[$itemKey]['qtty'] = $qtty;
+                $cart[$itemKey]['subtotal'] = $qtty * $cart[$itemKey]['product']->price;
+            }
+        }
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->route('cart')->with('success', 'Cart updated successfully');
+    }
+
     function cart() {
         return view('cart');
     }

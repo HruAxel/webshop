@@ -31,6 +31,8 @@ Route::get( '/kosar',
     [ProductController::class, 'cart']
 )->name('cart');
 
+Route::patch('/kosar', [ProductController::class, 'updateCart'])->name('cart.update');
+
 Route::post('/kosar/ures', [ProductController::class, 'clearCart'])->name('clear.cart');
 
 Route::get('/termek/{product}',

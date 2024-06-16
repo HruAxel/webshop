@@ -42,3 +42,7 @@ Route::get('/termek/{product}',
 Route::get('/log', function() {
     return view('logpage');
 })->name('logpage');
+
+Route::get('/bejelentkezes', function() {
+    return view('signin');
+})->name('signin');

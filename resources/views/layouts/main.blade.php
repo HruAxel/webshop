@@ -13,9 +13,12 @@
     <nav class="fixed-top">
       <div class="navbar bg-black bg-opacity-50 z-3 py-2">
         <div class="w-25">
+        <div class="d-flex justify-content-center">
           <a href="{{route('homepage')}}" class="navbar-brand d-flex justify-content-center"><img class="logo" src="{{asset('assets/pictures/logo.png')}}" alt=""></a>
         </div>
-        <div class="w-75">
+      </div>
+        <div class="w-75 d-flex justify-content-start align-items-center">
+        <div class="w-75 ">
           <ul class="navbar-nav d-flex flex-row justify-content-evenly py-4">
             <li class="nav-item dropdown px-2">
               <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,14 +41,16 @@
           </ul>
         </div>
       </div>
+      </div>
     </nav>
     <div class="w-100">
       @yield('content')
     </div>
-    <div class="w-100" style="height: 400px" >
-      <div class="w-100" style="height: 400px" >
 
-      </div>
+    {{-- <div class="w-100 bg-dark" style="height: 300px" >
+      <div class="w-100" style="height:300px" >
+
+      </div> --}}
     </div>
 
     

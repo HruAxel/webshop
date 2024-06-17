@@ -25,6 +25,10 @@ Route::get( '/webshop-minden-termek',
     [ProductController::class, 'index']
 )->name('webshop');
 
+Route::get( '/webshop-szalas-teak',
+    [ProductController::class, 'looseLeafTeas']
+)->name('tea');
+
 Route::post('/add-to-cart/{product}', [ProductController::class, 'addToCart']);
 
 Route::get( '/kosar',

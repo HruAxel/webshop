@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('catergory_id');
             $table->string('name', 60);
             $table->string('thumbnail')->nullable();
             $table->text('description')->nullable();
@@ -26,7 +25,6 @@ return new class extends Migration
             $table->string('use');
             $table->string('ingredients');
             $table->timestamps();
-            $table->foreign('catergory_id')->references('id')->on('categories');
         });
     }
 

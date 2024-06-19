@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title, Kezdőlap')
+@section('title', 'Szálas teák')
 
 @section('content')
 

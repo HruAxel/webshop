@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title, Kezdőlap')
+@section('title', 'Kosár')
 
 @section('content')
 
@@ -41,7 +41,7 @@
                                 Mennyiség
                             </th>
                             <th>
-                                
+
                             </th>
                             <th>
                                 Összesen

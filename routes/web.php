@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,13 @@ Route::get('/log', function() {
 })->name('logpage');
 
 Route::get('/bejelentkezes', function() {
-    return view('signin');
-})->name('signin');
+    return view('login');
+})->name('login');
+
+Route::post('/bejelentkezés', [UserController::class, 'loginProcess'])->name('post.login');
+
+Route::get('/regisztráció', function() {
+    return view('register');
+})->name('register');
+
+Route::post('/regisztráció', [UserController::class, 'register'])->name('post.register');

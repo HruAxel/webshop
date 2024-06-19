@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title, Kezdőlap')
+@section('title', 'Bejelentkezés')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 
 
     <div class="w-100  d-flex justify-content-center ">
-        <form class="col-3  z-2" action="" method="post">
+        <form class="col-3  z-2" action="{{route('post.login')}}" method="post">
             @if (Session::has('error'))
                 <div class="alert alert-danger my-3">{{ Session::get('error') }}</div>
             @endif

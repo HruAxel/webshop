@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\OnlyUsers;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +61,12 @@ Route::get('/regisztráció', function() {
 })->name('register');
 
 Route::post('/regisztráció', [UserController::class, 'register'])->name('post.register');
+
+Route::get('/profil', function() {
+    return view('profile');
+})->name('profile');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('homepage')->with('succes', __('Sikeresen kijelentkeztél!'));
+})->name('logout')->middleware([OnlyUsers::class]);

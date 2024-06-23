@@ -11965,12 +11965,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-html {
-    height: 100%;
-    
-}
 body {
-    min-height: 100%;
+
     position: relative;
     font-family: "Manrope", sans-serif;
 }
@@ -11980,11 +11976,8 @@ body {
     
   }
 
-  .img_1 {
-    height: 500px;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
+ 
+  
 
 .dropdown-item:hover {
     background: rgba(0, 0, 0, 0.2);
@@ -12013,7 +12006,9 @@ li {
 }
 
 
-
+.div > ul > li > a { 
+    font-size: 11px;
+}
 
 .navbar {
     transition: all .3s;
@@ -12103,8 +12098,33 @@ li {
 
   .data > p {
     margin: 0;
-    
   }
 
+  /* Log page */
+.side-left-hover {
+    transition: all 0.5s ease-in-out;
 
+    
+}
+
+.side-left-hover:hover {
+    transition: all 0.5s ease-in-out;
+
+    
+}
+
+.side-right-hover {
+    transition: all 0.5s ease-in-out;
+    
+}
+
+.side-right-hover:hover {
+    transition: all 0.5s ease-in-out;
+}
+
+/* footer */
+
+.footer {
+    background-color: black !important;
+}
   

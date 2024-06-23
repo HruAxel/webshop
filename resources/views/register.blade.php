@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="w-100 d-flex justify-content-center align-items-center" style="height: 400px">
-        <img class="w-100 min-vh-100 position-absolute top-0 z-0 img_1" src="{{ asset('assets/pictures/about.jpeg') }}"
+        <img class="w-100 min-vh-100 position-absolute top-0 z-0 img_1" src="{{ asset('assets/pictures/log_2.jpeg') }}"
             alt="">
         <h2 class="z-2 text-white">Regisztráció</h2>
     </div>

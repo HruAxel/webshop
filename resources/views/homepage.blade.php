@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="w-100">
-    <img class="w-100 position-absolute top-0 z-0 img_1" style="height: 1000px" src="{{asset('assets/pictures/main.webp')}}" alt="">
+    <img class="w-100 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 1000px" src="{{asset('assets/pictures/main.webp')}}" alt="">
 </div>
     <div class="content" style="height: 1000px">
         <div class="w-100 d-flex justify-content-center align-items-center h-100">

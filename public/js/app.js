@@ -3034,6 +3034,18 @@ $(document).ready(function () {
     }
   });
 });
+$(".left_h").mouseenter(function () {
+  $('.side-left-hover').css("scale", 1.2);
+});
+$(".left_h").mouseleave(function () {
+  $('.side-left-hover').css("scale", 1.0);
+});
+$(".right_h").mouseenter(function () {
+  $('.side-right-hover').css("scale", 1.2);
+});
+$(".right_h").mouseleave(function () {
+  $('.side-right-hover').css("scale", 1.0);
+});
 
 /***/ }),
 

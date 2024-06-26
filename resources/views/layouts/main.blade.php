@@ -33,13 +33,13 @@
                             <ul class="dropdown-menu position-absolute  bg-black bg-opacity-50">
                                 <li class="text-center"><a class="dropdown-item py-3"
                                         href="{{ route('webshop') }}">Minden termék</a></li>
-                                <li class="text-center"><a class="dropdown-item py-3" href="#">Matcha tea</a></li>
-                                <li class="text-center"><a class="dropdown-item py-3" href="#">Kiegészítők</a>
+                                <li class="text-center"><a class="dropdown-item py-3" href="{{route('matcha')}}">Matcha tea</a></li>
+                                <li class="text-center"><a class="dropdown-item py-3" href="{{route('accessory')}}">Kiegészítők</a>
                                 </li>
                                 {{-- <li><hr class="dropdown-divider"></li> --}}
                                 <li class="text-center"><a class="dropdown-item py-3" href="{{ route('tea') }}">Szálas
                                         teák</a></li>
-                                <li class="text-center"><a class="dropdown-item py-3" href="#">Egyéb</a></li>
+                                <li class="text-center"><a class="dropdown-item py-3" href="{{route('other')}}">Egyéb</a></li>
                             </ul>
                         </li>
                         <li class="nav-item px-2"><a href="{{ route('about') }}" class="nav-link">RÓLUNK</a></li>

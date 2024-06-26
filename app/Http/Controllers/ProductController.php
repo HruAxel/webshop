@@ -28,6 +28,30 @@ class ProductController extends Controller
         return view('tea', compact('products'));
     }
 
+    public function matchatea()
+    {
+        $category = Category::where('name', 'Matcha teák')->first();
+
+        $products = $category->product;
+        return view('matcha_page', compact('products'));
+    }
+
+    public function accessory()
+    {
+        $category = Category::where('name', 'Kiegészítők')->first();
+
+        $products = $category->product;
+        return view('accessory', compact('products'));
+    }
+
+    public function other()
+    {
+        $category = Category::where('name', 'Egyéb')->first();
+
+        $products = $category->product;
+        return view('other', compact('products'));
+    }
+
     function addToCart(Product $product, Request $request)
     {
         if (!$request->session()->has('cart')) {

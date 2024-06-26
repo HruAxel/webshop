@@ -32,6 +32,18 @@ Route::get( '/webshop-szalas-teak',
     [ProductController::class, 'looseLeafTeas']
 )->name('tea');
 
+Route::get( '/webshop-matcha-teak',
+    [ProductController::class, 'matchatea']
+)->name('matcha');
+
+Route::get( '/webshop-kiegeszitok',
+    [ProductController::class, 'accessory']
+)->name('accessory');
+
+Route::get( '/webshop-egyeb',
+    [ProductController::class, 'other']
+)->name('other');
+
 Route::post('/add-to-cart/{product}', [ProductController::class, 'addToCart']);
 
 Route::get( '/kosar',

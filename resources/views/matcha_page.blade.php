@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Szálas teák')
+@section('title', 'Matcha teák')
 
 @section('content')
 
@@ -38,8 +38,8 @@
                 </div>
             </form>
         @empty
-        <div class="w-100 d-flex justify-content-center">
-            <p >Nincs elérhető termék ebben a kategóriában.</p>
+        <div class="w-100 d-flex justify-content-center pt-3">
+            <p>Nincs elérhető termék ebben a kategóriában.</p>
         </div>
             
         @endforelse

@@ -11,7 +11,7 @@
     </div>
 
 
-    <div class="my-3 mx-5 px-5 d-flex justify-content-between flex-wrap">
+    <div class="my-3 mx-5  d-flex justify-content-between flex-wrap"  style="padding-left: 200px; padding-right: 200px">
 
 
         @foreach ($list as $item)

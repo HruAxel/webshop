@@ -82,3 +82,16 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect()->route('homepage')->with('succes', __('Sikeresen kijelentkeztél!'));
 })->name('logout')->middleware([OnlyUsers::class]);
+
+Route::post(
+    '/profil/general-data', [UserController::class, 'generalDataSave']
+)->name('post.generalData')->middleware([OnlyUsers::class]);
+
+
+Route::post(
+    '/profil/password-changed', [UserController::class, 'changePasswordSave']
+)->name('post.changePasswordSave')->middleware([OnlyUsers::class]);
+
+
+Route::post('/profil/billing-changed', [UserController::class, 'changeBillingData'])
+->name('post.changeBilling')->middleware([OnlyUsers::class]);

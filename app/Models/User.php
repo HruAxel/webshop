@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
+use App\Models\BillingData;
 
 class User extends Authenticatable
 {
@@ -34,7 +35,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    function setPasswordAttribute($value) {
+    function setPasswordAttribute($value)
+    {
         $this->attributes['password'] = Hash::make($value);
     }
 
@@ -46,4 +48,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    function billingData()
+    {
+        return $this->HasOne(BillingData::class);
+    }
+    function generalData()
+    {
+        return $this->HasOne(User::class);
+    }
 }

@@ -94,4 +94,17 @@ class UserController extends Controller
 }
 
 
+function adminLoginProcess(Request $request)
+{
+    $credentials = $request->only('name', 'password');
+
+    $loginresult = Auth::guard('admin')->attempt($credentials);
+
+    if ($loginresult) {
+        return redirect()->route('homepage')->with('success', __('Sikeresen beléptél!'));
+    } else {
+        return redirect()->back()->with('error', __('A belépés sikertelen, helytelen adatok!'));
+    }
+}
+
 }

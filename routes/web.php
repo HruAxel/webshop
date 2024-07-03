@@ -95,3 +95,9 @@ Route::post(
 
 Route::post('/profil/billing-changed', [UserController::class, 'changeBillingData'])
 ->name('post.changeBilling')->middleware([OnlyUsers::class]);
+
+Route::get('/admin-log', function() {
+    return view('admin_login');
+})->name('login');
+
+Route::post('/admin_login', [UserController::class, 'adminLoginProcess'])->name('post.adminlogin');

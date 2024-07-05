@@ -26,10 +26,20 @@ class Admin extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     // function setPasswordAttribute($value)
     // {
     //     $this->attributes['password'] = Hash::make($value);
     // }
+
+   
+       
+    
+
+    public function getIsAdminAttribute()
+    {
+        return $this->attributes['is_admin'];
+    }
 }

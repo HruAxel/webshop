@@ -11,6 +11,8 @@ use App\Models\BillingData;
 
 class UserController extends Controller
 {
+
+    /* USER */
     
     function register(RegisterRequest $request)
     {
@@ -94,6 +96,9 @@ class UserController extends Controller
 }
 
 
+/* ADMIN */
+
+
 function adminLoginProcess(Request $request)
 {
     $credentials = $request->only('name', 'password');
@@ -101,7 +106,7 @@ function adminLoginProcess(Request $request)
     $loginresult = Auth::guard('admin')->attempt($credentials);
 
     if ($loginresult) {
-        return redirect()->route('homepage')->with('success', __('Sikeresen beléptél!'));
+        return redirect()->route('dashboard')->with('success', __('Sikeresen beléptél!'));
     } else {
         return redirect()->back()->with('error', __('A belépés sikertelen, helytelen adatok!'));
     }

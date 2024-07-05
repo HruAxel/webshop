@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->HasOne(User::class);
     }
+
+    public function getIsAdminAttribute()
+    {
+        return $this->attributes['is_admin'];
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\OnlyUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* PAGES */
 
 Route::get('/kezdolap', [ProductController::class, 'index_homepage']
 )->name('homepage');
@@ -44,6 +47,8 @@ Route::get( '/webshop-egyeb',
     [ProductController::class, 'other']
 )->name('other');
 
+/* CART, PRODUCT */
+
 Route::post('/add-to-cart/{product}', [ProductController::class, 'addToCart']);
 
 Route::get( '/kosar',
@@ -57,6 +62,8 @@ Route::post('/kosar/ures', [ProductController::class, 'clearCart'])->name('clear
 Route::get('/termek/{product}',
     [ProductController::class, 'productView']
 )->name('product.view');
+
+/* LOG, REGISTER */
 
 Route::get('/log', function() {
     return view('logpage');
@@ -73,6 +80,8 @@ Route::get('/regisztráció', function() {
 })->name('register');
 
 Route::post('/regisztráció', [UserController::class, 'register'])->name('post.register');
+
+/* PROFIL */
 
 Route::get('/profil', function() {
     return view('profile');
@@ -96,8 +105,16 @@ Route::post(
 Route::post('/profil/billing-changed', [UserController::class, 'changeBillingData'])
 ->name('post.changeBilling')->middleware([OnlyUsers::class]);
 
+
+
+/* ADMIN */
+
 Route::get('/admin-log', function() {
     return view('admin_login');
 })->name('login');
 
 Route::post('/admin_login', [UserController::class, 'adminLoginProcess'])->name('post.adminlogin');
+
+Route::get('/admin-dashboard', function() {
+    return view('admin_dashboard');
+})->name('dashboard')->middleware('admin');

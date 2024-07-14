@@ -35,7 +35,7 @@ class UserController extends Controller
     }
 
     function generalDataSave(Request $request) {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
 
         $user->name = $request->get('name');
 
@@ -110,6 +110,15 @@ function adminLoginProcess(Request $request)
     } else {
         return redirect()->back()->with('error', __('A belépés sikertelen, helytelen adatok!'));
     }
+}
+
+public function adminLogout(Request $request)
+{
+    Auth::guard('admin')->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('admin.login');
 }
 
 }

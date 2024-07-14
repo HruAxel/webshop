@@ -4,14 +4,14 @@
 
 @section('content')
 
-    <div class="w-100 d-flex justify-content-center align-items-center" style="height: 400px">
-        <img class="w-100 min-vh-100 position-absolute top-0 z-0 img_1" src="{{ asset('assets/pictures/log_2.jpeg') }}"
+    <div class=" col-12 d-flex justify-content-center align-items-center" style="height: 400px">
+        <img class="col-12 min-vh-100 position-absolute top-0 z-0 img_1" src="{{ asset('assets/pictures/log_2.jpeg') }}"
             alt="">
         <h2 class="z-2 text-white">Regisztráció</h2>
     </div>
 
 
-    <div class="w-100  d-flex justify-content-center ">
+    <div class="col-12  d-flex justify-content-center ">
         <form class="col-3  z-2" action="{{route('post.register')}}" method="post">
             @if (Session::has('error'))
                 <div class="alert alert-danger my-3">{{ Session::get('error') }}</div>
@@ -49,7 +49,7 @@
 
                 <div class="mt-3 d-flex justify-content-center">
                     <button class="button btn btn-success ">
-                        Bejelentkezés
+                        Regisztráció
                     </button>
                 </div>
             </div>

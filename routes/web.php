@@ -111,10 +111,12 @@ Route::post('/profil/billing-changed', [UserController::class, 'changeBillingDat
 
 Route::get('/admin-log', function() {
     return view('admin_login');
-})->name('login');
+})->name('admin.login');
 
-Route::post('/admin_login', [UserController::class, 'adminLoginProcess'])->name('post.adminlogin');
+Route::post('/admin-login', [UserController::class, 'adminLoginProcess'])->name('post.adminlogin');
 
 Route::get('/admin-dashboard', function() {
     return view('admin_dashboard');
 })->name('dashboard')->middleware('admin');
+
+Route::post('/admin-logout', [UserController::class, 'adminLogout'])->name('admin.logout');

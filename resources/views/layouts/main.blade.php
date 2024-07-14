@@ -13,17 +13,17 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="w-100 bg-body-secondary min-vh-100">
+<body class="col-12 bg-body-secondary min-vh-100">
     <nav class="fixed-top">
         <div class="navbar bg-black bg-opacity-50 z-3 py-2">
-            <div class="w-25">
+            <div class="col-3">
                 <div class="d-flex justify-content-center">
                     <a href="{{ route('homepage') }}" class="navbar-brand d-flex justify-content-center"><img
                             class="logo" src="{{ asset('assets/pictures/logo.png') }}" alt=""></a>
                 </div>
             </div>
-            <div class="w-75 d-flex justify-content-start align-items-center">
-                <div class="w-75">
+            <div class="col-9 d-flex justify-content-start align-items-center">
+                <div class="col-9">
                     <ul class="navbar-nav d-flex flex-row justify-content-evenly py-4">
                         <li class="nav-item dropdown px-2">
                             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
@@ -69,7 +69,7 @@
         </div>
         </div>
     </nav>
-    <div class="w-100">
+    <div class="col-12">
         @yield('content')
     </div>
 

@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <div class="w-100 d-flex justify-content-center align-items-center" style="height: 400px">
-        <img class="w-100 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 400px"
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 400px">
+        <img class="col-12 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 400px"
             src="{{ asset('assets/pictures/main.webp') }}" alt="">
         <h2 class="z-2 text-white">Szálas teák</h2>
     </div>
@@ -30,7 +30,7 @@
                     <p class="mx-2 my-4 text-center nowrap" style="font-size: 1rem">{{ $product->name }}</p>
                 </a>
                 <small class="px-3">{{ $product->price }} Ft</small>
-                <div class=" d-flex flex-row p-3 justify-content-evenly w-100">
+                <div class=" d-flex flex-row p-3 justify-content-evenly col-12">
                     <input class="p-2 text-center" style="width: 30%" type="number" min="1" max="100"
                         name="qtty" value="1" id="">
 
@@ -38,7 +38,7 @@
                 </div>
             </form>
         @empty
-        <div class="w-100 d-flex justify-content-center pt-3">
+        <div class="col-12 d-flex justify-content-center pt-3">
             <p>Nincs elérhető termék ebben a kategóriában.</p>
         </div>
             

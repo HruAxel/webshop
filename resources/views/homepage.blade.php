@@ -4,11 +4,11 @@
 
 @section('content')
 
-<div class="w-100">
-    <img class="w-100 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 1000px" src="{{asset('assets/pictures/main.webp')}}" alt="">
+<div class="col-12">
+    <img class="col-12 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 1000px" src="{{asset('assets/pictures/main.webp')}}" alt="">
 </div>
     <div class="content" style="height: 1000px">
-        <div class="w-100 d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 d-flex justify-content-center align-items-center h-100">
             <img class="z-4 position-absolute" src="{{asset('assets/pictures/Moya_Logo_White.png')}}" alt="">
         </div>
     </div>
@@ -30,7 +30,7 @@
                 @endif
                 <a class="link-offset-2 link-underline link-underline-opacity-0" style="color: black" href="{{route('product.view', $item->id)}}"><p class="mx-2 my-4 text-center nowrap" style="font-size: 1rem">{{ $item->name }}</p></a>
                 <small class="px-3">{{ $item->price }} Ft</small>
-                <div class=" d-flex flex-row p-3 justify-content-evenly w-100">
+                <div class=" d-flex flex-row p-3 justify-content-evenly col-12">
                     <input class="p-2 text-center" style="width: 30%" type="number" min="1" max="100" name="qtty" value="1" id="">
                     
                     <button class="cart-button">Kosárba</button>

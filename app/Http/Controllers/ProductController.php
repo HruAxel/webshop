@@ -99,4 +99,25 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('product', compact('product'));
     }
+
+    // Admin
+
+    function admin_product()
+    {
+        $list = Product::get();
+        return view('admin_productlist', compact("list"));
+    }
+
+    function adminProductEdit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin_edit', compact('product'));
+    }
+
+    function adminProductUpdate(Request $request, $id) {
+
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        return redirect()->route('adminedit', $id)->with('success', 'Sikeres frissítés');
+    }
 }

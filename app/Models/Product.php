@@ -13,4 +13,15 @@ class Product extends Model
     function categories() {
         return $this->belongsToMany(Category::class, 'category_product');
     }
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'pack',
+        'from',
+        'taste',
+        'use',
+        'ingredients'
+        ];
 }

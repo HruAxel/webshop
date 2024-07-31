@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 
 /* PAGES */
 
-Route::get('/kezdolap', [ProductController::class, 'index_homepage']
+Route::get('/', [ProductController::class, 'index_homepage']
 )->name('homepage');
 
 Route::get('/rolunk', function () {
@@ -120,3 +120,15 @@ Route::get('/admin-dashboard', function() {
 })->name('dashboard')->middleware('admin');
 
 Route::post('/admin-logout', [UserController::class, 'adminLogout'])->name('admin.logout');
+
+Route::get('/admin-productlist', [ProductController::class, 'admin_product'] 
+ 
+)->name('productlist')->middleware('admin');
+
+Route::get('/admin-edit/{product}', [ProductController::class, 'adminProductEdit'] 
+ 
+)->name('adminedit')->middleware('admin');
+
+Route::post('/admin-edit/{id}', [ProductController::class, 'adminProductUpdate'] 
+ 
+)->name('product.edit')->middleware('admin');

@@ -20,7 +20,7 @@
         @auth('admin')
             <nav class="navbar bg-body-tertiary fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">MOYA webshop admin</a>
+                    <a class="navbar-brand" href="{{route('dashboard')}}">MOYA webshop admin</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -35,12 +35,12 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">Irányítópanel</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Link</a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                {{-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Dropdown
@@ -53,7 +53,7 @@
                                         </li>
                                         <li><a class="dropdown-item" href="#"></a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             
@@ -75,7 +75,10 @@
                 </div>
             </nav>
             @endauth
-            @yield('content')
+            <div class="col-12 min-vh-100 mt-5">
+                @yield('content')
+            </div>
+            
 
 
 

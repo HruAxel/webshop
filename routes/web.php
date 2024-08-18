@@ -59,7 +59,7 @@ Route::patch('/kosar', [ProductController::class, 'updateCart'])->name('cart.upd
 
 Route::post('/kosar/ures', [ProductController::class, 'clearCart'])->name('clear.cart');
 
-Route::get('/termek/{product}',
+Route::get('/termek/{name}',
     [ProductController::class, 'productView']
 )->name('product.view');
 
@@ -132,3 +132,17 @@ Route::get('/admin-edit/{product}', [ProductController::class, 'adminProductEdit
 Route::post('/admin-edit/{id}', [ProductController::class, 'adminProductUpdate'] 
  
 )->name('product.edit')->middleware('admin');
+
+Route::post('/admin-edit/delete/{id}', [ProductController::class, 'adminProductDelete'] 
+ 
+)->name('product.delete')->middleware('admin');
+
+Route::get('/admin-newproduct', [ProductController::class, 'adminCreateView'] 
+ 
+)->name('newproduct.view')->middleware('admin');
+
+Route::post('/admin-addproduct', [ProductController::class, 'adminAddProduct'] 
+ 
+)->name('addproduct')->middleware('admin');
+
+

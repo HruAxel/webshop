@@ -7,7 +7,7 @@
     <div class="col-12 d-flex justify-content-center align-items-center" style="height: 400px">
         <img class="col-12 position-absolute top-0 z-0 img_1 object-fit-cover" style="height: 400px"
             src="{{ asset('assets/pictures/main.webp') }}" alt="">
-        <h2 class="z-2 text-white">Szálas teák</h2>
+        <h2 class="z-2 text-white">Matcha teák</h2>
     </div>
 
 

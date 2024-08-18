@@ -41,7 +41,6 @@ class UserController extends Controller
 
         $user->email = $request->get('email');
 
-        $user->mobil = $request->get('mobil');
     
         $user->save();
 

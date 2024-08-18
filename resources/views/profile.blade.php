@@ -38,10 +38,6 @@
         </div>
 
         <div class="col-12">
-            <label for="mobil" class="fs-6 pb-1">Telefonszám:</label>
-            <input type="text" name="mobil" id="mobil" class="form-control" value="{{ Auth::user()->mobil }}">
-        </div>
-        <div class="col-12">
           <button class="button btn btn-outline-success position-relative top-50 start-50 translate-middle">
               Mentés
           </button>

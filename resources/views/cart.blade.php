@@ -54,12 +54,12 @@
                                         alt="">
                                 </td>
                                 <td>{{ $item['product']->name }}</td>
-                                <td>{{ $item['product']->price }}Ft</td>
+                                <td>{{ $item['product']->price }} Ft</td>
                                 <td> <input class="col-3 text-center" type="number" name="items[{{ $key }}][qtty]"
                                         value="{{ $item['qtty'] }}" min="1"></td>
                                 <td><button type="submit" name="update_item" value="{{ $key }}"
                                         class="btn btn-primary">Frissítés</button></td>
-                                <td>{{ $item['subtotal'] }}Ft</td>
+                                <td>{{ $item['subtotal'] }} Ft</td>
                             </tr>
                             @php
                                 $total += $item['subtotal'];

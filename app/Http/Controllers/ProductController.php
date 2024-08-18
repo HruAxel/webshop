@@ -120,4 +120,56 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect()->route('adminedit', $id)->with('success', 'Sikeres frissítés');
     }
+
+    function adminProductDelete($id) {
+
+        $product = Product::findOrFail($id);
+
+        $product->categories()->detach();
+
+        $product->delete($id);
+
+        return redirect()->route('productlist')->with('success', 'Sikeres törlés');
+
+    }
+
+    function adminCreateView() {
+        $categories = Category::all();
+        return view('admin_newproduct', compact('categories'));
+    }
+
+    function adminAddProduct(Request $request) {
+
+        $validateData = $request->validate([
+            'name'=> 'required|string|max:225',
+            'thumbnail' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'pack' => 'required|integer',
+            'from' => 'required|string',
+            'taste' => 'required|string',
+            'use' => 'required|string',
+            'ingredients' => 'required|string',
+            'categories' => 'array'
+        ]);
+
+        $product = Product::create([
+            'name'=> $validateData['name'],
+            'thumbnail' => $validateData['thumbnail'],
+            'description' => $validateData['description'],
+            'price' => $validateData['price'],
+            'pack' => $validateData['pack'],
+            'from' => $validateData['from'],
+            'taste' => $validateData['taste'],
+            'use' => $validateData['use'],
+            'ingredients' => $validateData['ingredients']
+        ]);
+
+        if ($request->has('categories')) {
+            $product->categories()->attach($validateData['categories']);
+        }
+
+        return redirect()->route('productlist')->with('success', 'Sikeresen hozzáadtad a terméket!');
+
+    }
 }

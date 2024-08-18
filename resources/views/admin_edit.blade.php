@@ -29,6 +29,10 @@
 
                         <input type="text" name="name" id="name" class="form-control w-50 mb-4" value="{{$product->name}}">
 
+                        <label for="thumbnail" class=" pb-1">Termék képe:</label>
+
+                        <input type="text" name="thumbnail" id="thumbnail" class="form-control mb-4 w-50" value = "{{$product->thumbnail}}">
+
                         <div class="d-flex flex-column">
                             <label for="description" class="pb-1">Termék leírása:</label>
 

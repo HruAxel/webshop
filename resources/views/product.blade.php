@@ -15,11 +15,11 @@
 
     <div class="d-flex justify-content-center product_top">
 
-        <div class="col-9 d-flex flex-column mx-3 my-3 bg-white border border-2 rounded-2">
+        <div class="col-9 d-flex flex-column px-5 mx-3 my-3 bg-white">
             <div class="d-flex flex-row">
                 <div class="p-5 d-flex justify-content-center w-50">
                     @if ($product->thumbnail)
-                        <img class="my-4 col-9" src="{{ $product->thumbnail }}" alt="...">
+                        <img class="my-4 col-9 object-fit-cover" src="{{ $product->thumbnail }}" alt="...">
                     @else
                         <img class="my-4" src="{{ asset('assets/pictures/no-photo.jpeg') }}" alt="{{ $product->name }}">
                     @endif
@@ -27,8 +27,8 @@
                 <div class="p-5">
                     <h2>{{ $product->name }}</h2>
                     <p>Organikus matcha zöld tea</p>
-                    <h4>{{ $product->price }} Ft</h4>
-                    <small>{{$product->pack}}</small>
+                    <h3 style="color: green">{{ $product->price }} Ft</h3>
+                    <small>Kiszerelés: {{$product->pack}} g</small>
                     <form action="/add-to-cart/{{ $product->id }}" method="post">
                         @csrf
                         <div class=" d-flex flex-row pt-5 w-100">
@@ -48,8 +48,9 @@
                     <p style="font-style: italic" class="mt-5">10.000Ft felett ingyenes kiszállítás! 2-3 munkanapon belül!</p>
                 </div>
             </div>
-            <div class="col-6 p-5 d-flex">
-                <p>{{ $product->description }}</p>
+            <div class="col-6 p-5 d-flex mt-5 flex-column">
+                <h4 style="font-family: Roboto Condensed, sans-serif;">{{ $product->name }} :</h4>
+                <p style="font-family: Roboto Condensed, sans-serif;">{{ $product->description }}</p>
             </div>
 
         </div>

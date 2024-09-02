@@ -9,7 +9,7 @@
 </div>
     <div class="content" style="height: 1000px">
         <div class="col-12 d-flex justify-content-center align-items-center h-100">
-            <img class="z-4 position-absolute" src="{{asset('assets/pictures/Moya_Logo_White.png')}}" alt="">
+            <img class="z-4 position-absolute center_logo" style="display: none" src="{{asset('assets/pictures/Moya_Logo_White.png')}}" alt="">
         </div>
     </div>
     <div class="d-flex justify-content-center mt-4">

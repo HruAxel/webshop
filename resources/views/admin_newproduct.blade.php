@@ -65,7 +65,7 @@
 
                         @if ($categories->count() > 0)
                         <div class="form-group mb-4">
-                            <label for="categories">Categories</label>
+                            <label for="categories">Kategóriák</label>
                             <select class="form-control" id="categories" name="categories[]" multiple>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -47,6 +47,14 @@ Route::get( '/webshop-egyeb',
     [ProductController::class, 'other']
 )->name('other');
 
+Route::get('/receptek', function () {
+    return view('recipe');
+})->name('recipe');
+
+Route::get('/miamatcha', function () {
+    return view('info');
+})->name('info');
+
 /* CART, PRODUCT */
 
 Route::post('/add-to-cart/{product}', [ProductController::class, 'addToCart']);

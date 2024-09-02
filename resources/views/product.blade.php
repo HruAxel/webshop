@@ -17,14 +17,14 @@
 
         <div class="col-9 d-flex flex-column px-5 mx-3 my-3 bg-white">
             <div class="d-flex flex-row">
-                <div class="p-5 d-flex justify-content-center w-50">
+                <div class="p-5 d-flex justify-content-center w-50 fade-1" style="display: none">
                     @if ($product->thumbnail)
                         <img class="my-4 col-9 object-fit-cover" src="{{ $product->thumbnail }}" alt="...">
                     @else
                         <img class="my-4" src="{{ asset('assets/pictures/no-photo.jpeg') }}" alt="{{ $product->name }}">
                     @endif
                 </div>
-                <div class="p-5">
+                <div class="p-5 fade-2 " style="display: none">
                     <h2>{{ $product->name }}</h2>
                     <p>Organikus matcha zöld tea</p>
                     <h3 style="color: green">{{ $product->price }} Ft</h3>
@@ -38,17 +38,17 @@
                             <div class="ps-4"><button class="cart-button">Kosárba</button></div>
                         </div>
                     </form>
-                    <div class="data mt-5">
+                    <div class="data mt-5 fade-2" style="display: none">
                         <p><b>Származás:</b> {{$product->from}}</p>
                         <p><b>Íz:</b> {{$product->taste}}</p>
                         <p><b>Ajánlott felhasználás:</b> {{$product->use}}</p>
                         <p><b>Összetevők:</b> {{$product->ingredients}}</p>
                         
                     </div>
-                    <p style="font-style: italic" class="mt-5">10.000Ft felett ingyenes kiszállítás! 2-3 munkanapon belül!</p>
+                    <p style="font-style: italic" class="mt-5 fade-2" style="display: none">10.000Ft felett ingyenes kiszállítás! 2-3 munkanapon belül!</p>
                 </div>
             </div>
-            <div class="col-6 p-5 d-flex mt-5 flex-column">
+            <div class="col-6 p-5 d-flex mt-5 flex-column fade-3" style="display: none">
                 <h4 style="font-family: Roboto Condensed, sans-serif;">{{ $product->name }} :</h4>
                 <p style="font-family: Roboto Condensed, sans-serif;">{{ $product->description }}</p>
             </div>

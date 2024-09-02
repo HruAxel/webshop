@@ -4,20 +4,22 @@
 body {
 
     position: relative;
-    font-family: "Manrope", sans-serif;
+
 }
 
-  li > a {
-    color: white !important;
-    
-  }
 
- 
-  
+
+li>a {
+    color: white !important;
+
+}
+
+
 
 .dropdown-item:hover {
     background: rgba(0, 0, 0, 0.2);
 }
+
 .dropdown-menu {
     border: none;
     margin-top: 30px !important;
@@ -42,7 +44,7 @@ li {
 }
 
 
-.div > ul > li > a { 
+.div>ul>li>a {
     font-size: 11px;
 }
 
@@ -53,7 +55,16 @@ li {
 .compressed {
     padding-top: 0px;
     padding-bottom: 0px;
-    
+
+}
+
+.fadein img {
+    transition: 0.6s ease;
+}
+
+.fadein img:hover {
+    opacity: 0.7;
+    transition: 0.6s ease;
 }
 
 /* about */
@@ -65,93 +76,97 @@ li {
 .w-70 {
     width: 70%;
 }
+
 .w-30 {
     width: 30%;
 }
 
 .about {
-   width: auto;
+    width: auto;
 
 }
 
 /* minden-termék */
 
-.product-card  {
+.product-card {
     width: 20%;
-   
-} 
 
-.product-card > a > img {
+}
+
+.product-card>a>img {
     width: 65%;
 
     transition: all 0.3s ease-in-out;
 
 }
-.product-card > a > img:hover {
+
+.product-card>a>img:hover {
     scale: 1.1;
     transition: all 0.3s ease-in-out;
 }
 
-.product-card > p {
+.product-card>p {
     height: 50px;
 }
 
 .cart-button {
-    background-color: #6B8E23; 
-    color: white; 
-    border: none; 
+    background-color: #6B8E23;
+    color: white;
+    border: none;
     padding: 10px 20px;
-    text-align: center; 
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 14px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
-  }
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-  .cart-button:hover {
-    background-color: #556B2F; /* Sötétebb zöld háttér */
-  }
+.cart-button:hover {
+    background-color: #556B2F;
+    /* Sötétebb zöld háttér */
+}
 
-  .cart-button:active {
-    background-color: #3C4F1A; /* Még sötétebb zöld háttér */
-  }
+.cart-button:active {
+    background-color: #3C4F1A;
+    /* Még sötétebb zöld háttér */
+}
 
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-
-  
-
-
-
-  .product_top {
-    padding-top: 100px;
-  }
-
-  .data > p {
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     margin: 0;
-  }
+}
 
-  /* Log page */
+
+
+
+
+.product_top {
+    padding-top: 100px;
+}
+
+.data>p {
+    margin: 0;
+}
+
+/* Log page */
 .side-left-hover {
     transition: all 0.5s ease-in-out;
 
-    
+
 }
 
 .side-left-hover:hover {
     transition: all 0.5s ease-in-out;
 
-    
+
 }
 
 .side-right-hover {
     transition: all 0.5s ease-in-out;
-    
+
 }
 
 .side-right-hover:hover {
@@ -162,6 +177,5 @@ li {
 
 .footer {
     background-color: black !important;
-    
+
 }
-  

@@ -9,11 +9,25 @@
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@1,6..96&family=Cinzel+Decorative&family=Manrope:wght@200..800&family=MedievalSharp&family=MonteCarlo&family=Playfair+Display&family=Poppins:wght@100&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
+    <script src="https://kit.fontawesome.com/752f353f64.js" crossorigin="anonymous"></script>
     <script src="{{ asset('/js/jquery.js') }}"></script>
     <title>@yield('title')</title>
 </head>
 
-<body class="col-12 bg-body-white min-vh-100">
+<body class="col-12 bg-body-white min-vh-100" style="font-family: Roboto Condensed, sans-serif;">
+    <div class="position-fixed end-0 col-2 min-vh-100" style="z-index: 10">
+        <div class="position-absolute col-2 h-25  top-50 end-0 translate-middle-y rounded-start-5 d-flex flex-column align-items-center justify-content-evenly" style="background-color: rgba(0, 0, 0, 0.471);">
+            <div class="w-100 align-items-center text-center flex-fill d-flex hover-div">
+                <a href="" class="w-100" style="color: white"><i class="fa-brands fa-facebook hover-i"></i></a>
+            </div>
+            <div class="w-100 align-items-center text-center flex-fill d-flex hover-div">
+                <a href="" class="w-100" style="color: white"><i class="fa-brands fa-instagram hover-i"></i></a>
+            </div>
+            <div class="w-100 align-items-center text-center flex-fill d-flex hover-div">
+                <a href="" class="w-100" style="color: white"><i class="fa-brands fa-x-twitter hover-i"></i></a>
+            </div>
+        </div>
+    </div>
     <nav class="fixed-top">
         <div class="navbar bg-black bg-opacity-50 z-3 py-2">
             <div class="col-3">
@@ -43,8 +57,8 @@
                             </ul>
                         </li>
                         <li class="nav-item px-2"><a href="{{ route('about') }}" class="nav-link">RÓLUNK</a></li>
-                        <li class="nav-item px-2"><a href="#" class="nav-link">MI A MATCHA?</a></li>
-                        <li class="nav-item px-2"><a href="#" class="nav-link">RECEPTEK</a></li>
+                        <li class="nav-item px-2"><a href="{{route('info')}}" class="nav-link">MI A MATCHA?</a></li>
+                        <li class="nav-item px-2"><a href="{{route('recipe')}}" class="nav-link">RECEPTEK</a></li>
                         <li class="nav-item px-2"><a href="{{ route('cart') }}" class="nav-link">KOSÁR</a></li>
                         <li class="nav-item px-2 d-flex align-items-center text-white">|</li>
 
@@ -73,10 +87,21 @@
         @yield('content')
     </div>
 
-    {{-- <div class="w-100 bg-dark" style="height: 300px" >
-      <div class="w-100" style="height:300px" >
 
-      </div> --}}
+
+     <div class="col-12 bg-dark " style="height: 200px" >
+      <div class="col-12 d-flex flex-row justify-content-between" style="height:200px" >
+        <div class="h-100 align-items-center d-flex col-4 ps-5">
+            <img class="logo" src="{{ asset('assets/pictures/moya-footer.png') }}" alt="">
+            <small class="ms-5" style="color: white">© MOYA EUROPE, ALL RIGHTS RESERVED</small>
+        </div>
+        <div class="col-4 mt-5">
+            <h5 style="color: white">KAPCSOLAT</h5>
+            <p style="color: white">MOYA TEA LIMITED<br>
+                Tel.: +36 20 423 4149<br>
+                Email: info@moyamatcha.hu</p>
+        </div>
+      </div> 
     </div>
 
 

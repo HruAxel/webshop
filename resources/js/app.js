@@ -2,7 +2,7 @@ require('./loader');
 
 $(document).ready(function () {
   $(window).on("scroll", function () {
-    let navbar = $(".navbar");
+    let navbar = $("nav");
     if ($(window).scrollTop() >= 40) {
       if (navbar.hasClass("py-2")) {
         navbar.removeClass("py-2");

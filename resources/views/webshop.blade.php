@@ -11,11 +11,11 @@
     </div>
 
 
-    <div class="my-3 mx-5  d-flex justify-content-center flex-wrap" >
+    <div class="my-3 mx-5  d-flex justify-content-center flex-wrap resp_home_prod" >
 
 
         @foreach ($list as $item)
-            <form action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white">
+            <form action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod">
                 @csrf
                 @if ($item->thumbnail)
                     <a class="d-flex justify-content-center" href="{{route('product.view', $item->id)}}"><img class="my-4" src="{{ $item->thumbnail }}" alt="..."></a>

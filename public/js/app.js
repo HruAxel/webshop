@@ -3020,7 +3020,7 @@ function withinMaxClamp(min, value, max) {
 __webpack_require__(/*! ./loader */ "./resources/js/loader.js");
 $(document).ready(function () {
   $(window).on("scroll", function () {
-    var navbar = $(".navbar");
+    var navbar = $("nav");
     if ($(window).scrollTop() >= 40) {
       if (navbar.hasClass("py-2")) {
         navbar.removeClass("py-2");

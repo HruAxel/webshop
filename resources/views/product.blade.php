@@ -15,9 +15,9 @@
 
     <div class="d-flex justify-content-center product_top">
 
-        <div class="col-9 d-flex flex-column px-5 mx-3 my-3 bg-white">
-            <div class="d-flex flex-row">
-                <div class="p-5 d-flex justify-content-center w-50 fade-1" style="display: none">
+        <div class=" d-flex flex-column px-5 mx-3 my-3 bg-white resp_product">
+            <div class="d-flex resp_product_1">
+                <div class="p-5 d-flex justify-content-center w-50 fade-1 resp_product_2" style="display: none">
                     @if ($product->thumbnail)
                         <img class="my-4 col-9 object-fit-cover" src="{{ $product->thumbnail }}" alt="...">
                     @else

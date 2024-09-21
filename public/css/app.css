@@ -11975,6 +11975,7 @@ body {
 
 li>a {
     color: white !important;
+    font-size: 0.8rem !important;
 
 }
 
@@ -12141,5 +12142,65 @@ input[type=number]::-webkit-inner-spin-button {
 
 .footer {
     background-color: black !important;
+
+}
+
+/* Reszponzivitás */
+.navbar-nav>li {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+/* .hamburger {
+    display: none;
+} */
+
+@media(min-width: 769px) {
+    .navbar-nav {
+        justify-content: space-around !important;
+        margin: auto !important;
+    }
+}
+
+@media(max-width: 1200px) {
+    .resp_home_prod {
+        flex-direction: column;
+        align-items: center;
+    }
+    .resp_home_prod_2 {
+        width: 60%;
+        
+    }
+    .resp_main_social {
+        width: 3rem;
+    }
+
+    li>a {
+        font-size: 0.7rem !important;
+    }
+
+
+}
+
+@media(max-width: 992px) {
+    .resp_main_nav_2 {
+        width: 80%;
+    }
+    li>a {
+        font-size: 0.6rem !important;
+    }
+    /* .resp_product_1 {
+        flex-direction: column-reverse !important;
+        justify-content: center !important;
+        align-items: center !important;
+    } */
+    .resp_product {
+        justify-content: center !important;
+        align-items: center !important;
+        margin: auto !important;
+    }
+
+}
+
+@media (max-width: 768px) {
 
 }

@@ -12,7 +12,7 @@
 
     <div class="d-flex justify-content-center">
 
-        <div class="col-9 d-flex justify-content-center flex-column-reverse">
+        <div class="col-9 d-flex justify-content-center flex-column-reverse m-5">
 
 
             @php

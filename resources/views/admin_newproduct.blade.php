@@ -45,19 +45,19 @@
 
                         <label for="pack" class=" pb-1">Termék mennyisége:</label>
 
-                        <input type="text" name="pack" id="pack" class="form-control mb-4 w-50" required>
+                        <input type="text" name="pack" id="pack" class="form-control mb-4 w-50" >
 
                         <label for="from" class=" pb-1">Termék származási helye:</label>
 
-                        <input type="text" name="from" id="from" class="form-control mb-4 w-50" required>
+                        <input type="text" name="from" id="from" class="form-control mb-4 w-50" >
 
                         <label for="taste" class=" pb-1">Termék íze:</label>
 
-                        <input type="text" name="taste" id="taste" class="form-control mb-4 w-50" required>
+                        <input type="text" name="taste" id="taste" class="form-control mb-4 w-50" >
 
                         <label for="use" class=" pb-1">Termék felhasználati javaslata:</label>
 
-                        <input type="text" name="use" id="use" class="form-control mb-4 w-50" required>
+                        <input type="text" name="use" id="use" class="form-control mb-4 w-50" >
 
                         <label for="ingredients" class=" pb-1">Termék összetevői:</label>
 

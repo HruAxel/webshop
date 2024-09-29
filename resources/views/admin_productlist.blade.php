@@ -9,14 +9,14 @@
     @endif
 
 
-    <div class="d-flex justify-content-center flex-column min-vh-100">
-        <div class="card   px-5 py-5 ">
-            <button><a href="{{route('newproduct.view')}}">Új termék</a></button>
+    <div class="d-flex justify-content-center align-items-center flex-column min-vh-100">
+        <div class=" d-flex justify-content-center col-12 mx-2 my-2 px-5 py-5 ">
+            <button class="col-5 btn btn-success"><a href="{{route('newproduct.view')}}">Új termék</a></button>
         </div>
 
-        <div class="card d-flex w-50 px-5 py-5">
+        
 
-            <div class="card min-vh-100 px-5 py-5">
+            <div class="card col-6 min-vh-100 px-5 py-5 mx-2 my-2">
 
 
 
@@ -61,7 +61,7 @@
 
             </div>
 
-        </div>
+        
 
     </div>
 

@@ -11,12 +11,12 @@
     </div>
 
 
-    <div class="my-3 mx-5 px-5 d-flex justify-content-between flex-wrap resp_home_prod">
+    <div class="my-3 mx-5 px-5 d-flex justify-content-center flex-wrap resp_home_prod">
 
 
         @forelse ($products as $product)
             <form action="/add-to-cart/{{ $product->id }}" method="post"
-                class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white border border-2 rounded-2 resp_home_prod_2">
+                class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod_2 add-to-cart-form">
                 @csrf
                 @if ($product->thumbnail)
                     <a class="d-flex justify-content-center" href="{{ route('product.view', $product->id) }}"><img
@@ -38,7 +38,7 @@
                 </div>
             </form>
         @empty
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center align-items-center">
             <p >Nincs elérhető termék ebben a kategóriában.</p>
         </div>
             

@@ -3058,6 +3058,30 @@ $(document).ready(function () {
 $(document).ready(function () {
   $(".fade-3").fadeIn(2000);
 });
+$(document).ready(function () {
+  $('.add-to-cart-form').on('submit', function (event) {
+    event.preventDefault(); // Megakadályozza az oldal újratöltését
+
+    var form = $(this);
+    var formData = form.serialize(); // Az űrlap adatainak összegyűjtése
+
+    $.ajax({
+      url: form.attr('action'),
+      // Az űrlap 'action' attribútuma
+      type: form.attr('method'),
+      // Az űrlap 'method' attribútuma
+      data: formData,
+      // Az összegyűjtött űrlapadatok elküldése
+      success: function success(response) {
+        // Itt frissítheted a kosár tartalmát vagy megjeleníthetsz egy üzenetet
+      },
+      error: function error(xhr) {
+        console.log(xhr.responseText); // Hiba esetén megjeleníti az üzenetet
+      }
+    });
+    return false;
+  });
+});
 
 /***/ }),
 

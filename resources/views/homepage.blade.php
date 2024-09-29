@@ -16,12 +16,12 @@
         <h2>Legnépszerűbb termékek</h2>
     </div>
     
-    <div class="my-3 mx-5 px-5 d-flex justify-content-center resp_home_prod" >
+    <div class="my-3 mx-5 px-5 d-flex justify-content-center flex-wrap resp_home_prod" >
 
 
 
         @foreach ($list as $item)
-            <form action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center resp_home_prod_2">
+            <form  action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center resp_home_prod_2 add-to-cart-form">
                 @csrf
                 @if ($item->thumbnail)
                     <a class="d-flex justify-content-center" href="{{route('product.view', $item->id)}}"><img class="my-4" src="{{ $item->thumbnail }}" alt="..."></a>

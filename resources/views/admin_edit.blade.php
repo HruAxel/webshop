@@ -63,7 +63,19 @@
 
                         <input type="text" name="ingredients" id="ingredients" class="form-control mb-4 w-50" value = "{{$product->ingredients}}">
 
-
+                        @if ($categories->count() > 0)
+                        <div class="form-group mb-4">
+                            <label for="categories">Kategóriák</label>
+                            <select class="form-control" id="categories" name="category_id[]" multiple>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" 
+                                        @if(in_array($category->id, $product->categories->pluck('id')->toArray())) selected @endif>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
 
 
 

@@ -57,11 +57,39 @@ class ProductController extends Controller
         if (!$request->session()->has('cart')) {
             $request->session()->put('cart', []);
         }
+
+
         $qtty = $request->qtty ? $request->qtty : 1;
-        $request->session()->put('cart.' . $product->id, ['product' => $product, 'qtty' => $qtty, 'subtotal' => $qtty * $product->price]);
-        // dump($request->session()->get('cart'));
-        // $request->session()->forget('cart');
-        return redirect()->back()->with('succes', 'Kosárba');
+
+            // Ellenőrizzük, hogy van-e elegendő készlet
+    if ($product->stock >= $qtty) {
+        // Kosárba helyezés
+        $cart = $request->session()->get('cart');
+        
+        // Ha már benne van a termék a kosárban, akkor csak a mennyiséget növeljük
+        if (isset($cart[$product->id])) {
+            $cart[$product->id]['qtty'] += $qtty;
+        } else {
+            $cart[$product->id] = [
+                'product' => $product,
+                'qtty' => $qtty,
+                'subtotal' => $qtty * $product->price,
+            ];
+        }
+
+        $request->session()->put('cart', $cart);
+
+        // Frissítjük a termék készletét
+        $product->stock -= $qtty; // Csökkentjük a teljes készletet
+        $product->reserved_stock += $qtty; // Növeljük a foglalt készletet
+        $product->save(); // Mentjük a változásokat
+
+        return redirect()->back()->with('success', 'A termék bekerült a kosárba');
+    } else {
+        return redirect()->back()->with('error', 'Nincs elegendő készlet');
+    }
+ 
+
     }
 
     function updateCart(Request $request)
@@ -85,13 +113,36 @@ class ProductController extends Controller
 
     function cart()
     {
+
+        
         return view('cart');
     }
 
+    
     function clearCart(Request $request)
     {
-        $request->session()->forget('cart');
-        return redirect()->back();
+        // Ellenőrizzük, hogy van-e kosár a session-ben
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart');
+    
+            // Minden kosárban lévő termékre frissítjük a készletet
+            foreach ($cart as $cartItem) {
+                $product = Product::find($cartItem['product']->id); // Megkeressük a terméket az adatbázisból
+                $qtty = $cartItem['qtty']; // A kosárban lévő mennyiség
+    
+                // Visszaállítjuk a készletet
+                $product->stock += $qtty; // Növeljük a készletet a kosárban lévő mennyiséggel
+                $product->reserved_stock -= $qtty; // Csökkentjük a foglalt készletet
+    
+                $product->save(); // Mentjük a változásokat az adatbázisban
+            }
+    
+            // Töröljük a kosarat a session-ből
+            $request->session()->forget('cart');
+        }
+    
+        // Visszairányítunk az előző oldalra
+        return redirect()->back()->with('success', 'A kosár kiürítve és a készletek visszaállítva.');
     }
 
     function productView($id)
@@ -111,20 +162,53 @@ class ProductController extends Controller
     function adminProductEdit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin_edit', compact('product'));
+        $categories = Category::all();
+        return view('admin_edit', compact('product'), compact('categories'));
     }
 
 
-    function adminProductUpdate(Request $request, $id) {
+    function adminProductUpdate(Request $request, $id)
+    {
 
         $product = Product::findOrFail($id);
-        $product->update($request->all());
+
+
+
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'thumbnail' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'pack' => 'nullable|string|max:255',
+            'from' => 'nullable|string|max:255',
+            'taste' => 'nullable|string|max:255',
+            'use' => 'nullable|string|max:255',
+            'ingredients' => 'nullable|string',
+            'categories' => 'array'
+        ]);
+
+        $product->update([
+            'name' => $request->input('name'),
+            'thumbnail' => $request->input('thumbnail'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'pack' => $request->input('pack'),
+            'from' => $request->input('from'),
+            'taste' => $request->input('taste'),
+            'use' => $request->input('use'),
+            'ingredients' => $request->input('ingredients')
+
+        ]);
+
+        $categoryIds = $request->input('category_id', []);
+        $product->categories()->sync($categoryIds);
 
         return redirect()->route('adminedit', $id)->with('success', 'Sikeres frissítés');
-
     }
 
-    function adminProductDelete($id) {
+    function adminProductDelete($id)
+    {
 
         $product = Product::findOrFail($id);
 
@@ -133,31 +217,32 @@ class ProductController extends Controller
         $product->delete($id);
 
         return redirect()->route('productlist')->with('success', 'Sikeres törlés');
-
     }
 
-    function adminCreateView() {
+    function adminCreateView()
+    {
         $categories = Category::all();
         return view('admin_newproduct', compact('categories'));
     }
 
-    function adminAddProduct(Request $request) {
+    function adminAddProduct(Request $request)
+    {
 
         $validateData = $request->validate([
-            'name'=> 'required|string|max:225',
+            'name' => 'required|string|max:225',
             'thumbnail' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|numeric',
-            'pack' => 'required|integer',
-            'from' => 'required|string',
-            'taste' => 'required|string',
-            'use' => 'required|string',
-            'ingredients' => 'required|string',
+            'price' => 'nullable|numeric',
+            'pack' => 'nullable|integer',
+            'from' => 'nullable|string',
+            'taste' => 'nullable|string',
+            'use' => 'nullable|string',
+            'ingredients' => 'nullable|string',
             'categories' => 'array'
         ]);
 
         $product = Product::create([
-            'name'=> $validateData['name'],
+            'name' => $validateData['name'],
             'thumbnail' => $validateData['thumbnail'],
             'description' => $validateData['description'],
             'price' => $validateData['price'],
@@ -173,6 +258,5 @@ class ProductController extends Controller
         }
 
         return redirect()->route('productlist')->with('success', 'Sikeresen hozzáadtad a terméket!');
-
     }
 }

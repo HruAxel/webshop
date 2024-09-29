@@ -11979,7 +11979,10 @@ li>a {
 
 }
 
-
+a {
+    text-decoration: none !important;
+    color: black;
+}
 
 .dropdown-item:hover {
     background: rgba(0, 0, 0, 0.2);
@@ -12159,6 +12162,7 @@ input[type=number]::-webkit-inner-spin-button {
         justify-content: space-around !important;
         margin: auto !important;
     }
+
 }
 
 @media(max-width: 1200px) {
@@ -12167,7 +12171,7 @@ input[type=number]::-webkit-inner-spin-button {
         align-items: center;
     }
     .resp_home_prod_2 {
-        width: 60%;
+        width: 100% !important;
         
     }
     .resp_main_social {

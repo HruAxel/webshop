@@ -10,12 +10,16 @@
         <h2 class="z-2 text-white">Minden termék</h2>
     </div>
 
+    @if (Session::has('success'))
+        <div class="alert alert-success mt-5 pt-3">{{ Session::get('success') }}</div>
+    @endif
+
 
     <div class="my-3 mx-5  d-flex justify-content-center flex-wrap resp_home_prod" >
 
 
         @foreach ($list as $item)
-            <form action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod">
+            <form  action="/add-to-cart/{{$item->id}}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod_2 add-to-cart-form">
                 @csrf
                 @if ($item->thumbnail)
                     <a class="d-flex justify-content-center" href="{{route('product.view', $item->id)}}"><img class="my-4" src="{{ $item->thumbnail }}" alt="..."></a>

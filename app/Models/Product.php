@@ -23,6 +23,7 @@ class Product extends Model
         'from',
         'taste',
         'use',
-        'ingredients'
+        'ingredients',
+        'category_id'
         ];
 }

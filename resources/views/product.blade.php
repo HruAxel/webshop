@@ -24,28 +24,40 @@
                         <img class="my-4" src="{{ asset('assets/pictures/no-photo.jpeg') }}" alt="{{ $product->name }}">
                     @endif
                 </div>
-                <div class="p-5 fade-2 " style="display: none">
+                <div class="p-5 fade-1 " style="display: none">
                     <h2>{{ $product->name }}</h2>
                     <p>Organikus matcha zöld tea</p>
                     <h3 style="color: green">{{ $product->price }} Ft</h3>
-                    <small>Kiszerelés: {{$product->pack}} g</small>
-                    <form action="/add-to-cart/{{ $product->id }}" method="post">
+                    <small>Kiszerelés: {{ $product->pack }} g</small>
+                    <form class="add-to-cart-form" action="/add-to-cart/{{ $product->id }}" method="post">
                         @csrf
                         <div class=" d-flex flex-row pt-5 w-100">
-                            <input class="p-2 col-3"  type="number" value="1" min="1" max="100"
+                            <input class="p-2 col-3" type="number" value="1" min="1" max="100"
                                 name="qtty" id="">
 
                             <div class="ps-4"><button class="cart-button">Kosárba</button></div>
                         </div>
                     </form>
-                    <div class="data mt-5 fade-2" style="display: none">
-                        <p><b>Származás:</b> {{$product->from}}</p>
-                        <p><b>Íz:</b> {{$product->taste}}</p>
-                        <p><b>Ajánlott felhasználás:</b> {{$product->use}}</p>
-                        <p><b>Összetevők:</b> {{$product->ingredients}}</p>
-                        
+                    <div class="data mt-5 fade-1" style="display: none">
+                        @if ($product->from)
+                            <p><b>Származás:</b> {{ $product->from }}</p>
+                        @endif
+
+                        @if ($product->taste)
+                            <p><b>Íz:</b> {{ $product->taste }}</p>
+                        @endif
+
+                        @if ($product->use)
+                            <p><b>Ajánlott felhasználás:</b> {{ $product->use }}</p>
+                        @endif
+
+                        @if ($product->ingredients)
+                            <p><b>Összetevők:</b> {{ $product->ingredients }}</p>
+                        @endif
+
                     </div>
-                    <p style="font-style: italic" class="mt-5 fade-2" style="display: none">10.000Ft felett ingyenes kiszállítás! 2-3 munkanapon belül!</p>
+                    <p style="font-style: italic" class="mt-5 fade-2" style="display: none">10.000Ft felett ingyenes
+                        kiszállítás! 2-3 munkanapon belül!</p>
                 </div>
             </div>
             <div class="col-6 p-5 d-flex mt-5 flex-column fade-3" style="display: none">

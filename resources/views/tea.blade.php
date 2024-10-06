@@ -15,7 +15,7 @@
 
 
         @forelse ($products as $product)
-            <form action="/add-to-cart/{{ $product->id }}" method="post"
+            <form  action="/add-to-cart/{{ $product->id }}" method="post" class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod_2 add-to-cart-form"
                 class="product-card d-flex flex-column mx-1 my-3 align-items-center bg-white resp_home_prod_2 add-to-cart-form">
                 @csrf
                 @if ($product->thumbnail)
@@ -30,12 +30,15 @@
                     <p class="mx-2 my-4 text-center nowrap" style="font-size: 1rem">{{ $product->name }}</p>
                 </a>
                 <small class="px-3">{{ $product->price }} Ft</small>
+                @if ($product->stock > 0)
                 <div class=" d-flex flex-row p-3 justify-content-evenly col-12">
-                    <input class="p-2 text-center" style="width: 30%" type="number" min="1" max="100"
-                        name="qtty" value="1" id="">
-
+                    <input class="p-2 text-center" style="width: 30%" type="number" min="1" max="100" name="qtty" value="1" id="">
+                    
                     <button class="cart-button">Kosárba</button>
                 </div>
+                @else
+                <p class="text-danger pt-5">A termék jelenleg nem elérhető</p>
+                @endif
             </form>
         @empty
         <div class="col-12 d-flex justify-content-center align-items-center">

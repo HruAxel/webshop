@@ -54,42 +54,43 @@ class ProductController extends Controller
 
     function addToCart(Product $product, Request $request)
     {
+        
         if (!$request->session()->has('cart')) {
             $request->session()->put('cart', []);
         }
-
-
-        $qtty = $request->qtty ? $request->qtty : 1;
-
-            // Ellenőrizzük, hogy van-e elegendő készlet
-    if ($product->stock >= $qtty) {
-        // Kosárba helyezés
-        $cart = $request->session()->get('cart');
         
-        // Ha már benne van a termék a kosárban, akkor csak a mennyiséget növeljük
-        if (isset($cart[$product->id])) {
-            $cart[$product->id]['qtty'] += $qtty;
+        $qtty = $request->qtty?$request->qtty:1;
+    
+        if ($product->stock >= $qtty) {
+            $cart = $request->session()->get('cart');
+    
+            if (isset($cart[$product->id])) {
+                $cart[$product->id]['qtty'] += $qtty;
+            } else {
+                $cart[$product->id] = [
+                    'product' => $product,
+                    'qtty' => $qtty,
+                    'subtotal' => $qtty * $product->price,
+                ];
+            }
+    
+            $request->session()->put('cart', $cart);
+            
+            // Készlet frissítése
+            $product->stock -= $qtty;
+            $product->reserved_stock += $qtty;
+            $product->save();
+            
+            return response()->json([
+                'status' => 'success',
+                
+            ]);
         } else {
-            $cart[$product->id] = [
-                'product' => $product,
-                'qtty' => $qtty,
-                'subtotal' => $qtty * $product->price,
-            ];
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Nincs elegendő készlet a termékből!'
+            ], 400); // 400-as kód, ha hibát okoz
         }
-
-        $request->session()->put('cart', $cart);
-
-        // Frissítjük a termék készletét
-        $product->stock -= $qtty; // Csökkentjük a teljes készletet
-        $product->reserved_stock += $qtty; // Növeljük a foglalt készletet
-        $product->save(); // Mentjük a változásokat
-
-        return redirect()->back()->with('success', 'A termék bekerült a kosárba');
-    } else {
-        return redirect()->back()->with('error', 'Nincs elegendő készlet');
-    }
- 
-
     }
 
     function updateCart(Request $request)
@@ -106,6 +107,8 @@ class ProductController extends Controller
             }
         }
 
+        
+
         $request->session()->put('cart', $cart);
 
         return redirect()->route('cart')->with('success', 'Cart updated successfully');
@@ -121,27 +124,27 @@ class ProductController extends Controller
     
     function clearCart(Request $request)
     {
-        // Ellenőrizzük, hogy van-e kosár a session-ben
+        
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart');
     
-            // Minden kosárban lévő termékre frissítjük a készletet
+            
             foreach ($cart as $cartItem) {
-                $product = Product::find($cartItem['product']->id); // Megkeressük a terméket az adatbázisból
-                $qtty = $cartItem['qtty']; // A kosárban lévő mennyiség
+                $product = Product::find($cartItem['product']->id); 
+                $qtty = $cartItem['qtty']; 
     
-                // Visszaállítjuk a készletet
-                $product->stock += $qtty; // Növeljük a készletet a kosárban lévő mennyiséggel
-                $product->reserved_stock -= $qtty; // Csökkentjük a foglalt készletet
+                
+                $product->stock += $qtty; 
+                $product->reserved_stock -= $qtty; 
     
-                $product->save(); // Mentjük a változásokat az adatbázisban
+                $product->save(); 
             }
     
-            // Töröljük a kosarat a session-ből
+            
             $request->session()->forget('cart');
         }
     
-        // Visszairányítunk az előző oldalra
+        
         return redirect()->back()->with('success', 'A kosár kiürítve és a készletek visszaállítva.');
     }
 
@@ -157,6 +160,12 @@ class ProductController extends Controller
     {
         $list = Product::get();
         return view('admin_productlist', compact("list"));
+    }
+
+    function adminStock()
+    {
+        $list = Product::get();
+        return view('admin_stock', compact("list"));
     }
 
     function adminProductEdit($id)
@@ -258,5 +267,19 @@ class ProductController extends Controller
         }
 
         return redirect()->route('productlist')->with('success', 'Sikeresen hozzáadtad a terméket!');
+    }
+
+    function updateStock(Request $request, $id) {
+
+        $validated = $request->validate([
+            'stock' => 'required|integer|min:0'
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        $product->stock = $validated['stock'];
+        $product->save();
+
+        return redirect()->back();
     }
 }

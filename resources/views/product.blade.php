@@ -29,15 +29,23 @@
                     <p>Organikus matcha zöld tea</p>
                     <h3 style="color: green">{{ $product->price }} Ft</h3>
                     <small>Kiszerelés: {{ $product->pack }} g</small>
+                    @if ($product->stock > 0)
                     <form class="add-to-cart-form" action="/add-to-cart/{{ $product->id }}" method="post">
                         @csrf
+                        <small class="text-success d-block">Még <b class="fs-6">{{$product->stock}}</b> van készleten!</small>
                         <div class=" d-flex flex-row pt-5 w-100">
+                            
                             <input class="p-2 col-3" type="number" value="1" min="1" max="100"
-                                name="qtty" id="">
+                                name="qtty">
 
                             <div class="ps-4"><button class="cart-button">Kosárba</button></div>
                         </div>
                     </form>
+                    @else
+                        <p class="text-danger pt-5">A termék jelenleg nem elérhető</p>
+                    @endif
+                    
+
                     <div class="data mt-5 fade-1" style="display: none">
                         @if ($product->from)
                             <p><b>Származás:</b> {{ $product->from }}</p>

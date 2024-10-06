@@ -1,5 +1,7 @@
 require('./loader');
 
+import Swal from 'sweetalert2';
+
 $(document).ready(function () {
   $(window).on("scroll", function () {
     let navbar = $("nav");
@@ -61,12 +63,26 @@ $(document).ready(function() {
           type: form.attr('method'), // Az űrlap 'method' attribútuma
           data: formData, // Az összegyűjtött űrlapadatok elküldése
           success: function(response) {
-              // Itt frissítheted a kosár tartalmát vagy megjeleníthetsz egy üzenetet
+            if (response.status === 'success') {
+              Swal.fire({
+                  title: 'Siker!',
+                  text: response.message,
+                  icon: 'success',
+                  confirmButtonText: 'Ok'
+              });
+          }
               
           },
           error: function(xhr) {
-              console.log(xhr.responseText); // Hiba esetén megjeleníti az üzenetet
-          }
+            if (xhr.status === 400) {
+                Swal.fire({
+                    title: 'Hiba!',
+                    text: xhr.responseJSON.message,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            }
+        }
       });
       return false;
   });

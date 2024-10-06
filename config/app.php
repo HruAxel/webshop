@@ -43,6 +43,8 @@ return [
 
     'debug' => (bool) env('APP_DEBUG', false),
 
+    'charset' => 'UTF-8',
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

@@ -153,4 +153,10 @@ Route::post('/admin-addproduct', [ProductController::class, 'adminAddProduct']
  
 )->name('addproduct')->middleware('admin');
 
+Route::get('/admin-stock', [ProductController::class, 'adminStock'] 
+ 
+)->name('stock')->middleware('admin');
 
+Route::post('/admin-stock/{id}', [ProductController::class, 'updateStock'] 
+ 
+)->name('admin.stockUpdate')->middleware('admin');

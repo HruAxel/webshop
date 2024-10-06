@@ -48,14 +48,15 @@
                             </th>
                         </tr>
 
-    
+
 
                         @foreach ($cart as $key => $item)
                             <tr>
                                 <td class="col-3"><img class="col-6" src="{{ $item['product']->thumbnail }}"
                                         alt="">
                                 </td>
-                                <td><a href="{{route('product.view', $item['product'])}}">{{ $item['product']->name }}</a></td>
+                                <td><a href="{{ route('product.view', $item['product']) }}">{{ $item['product']->name }}</a>
+                                </td>
                                 <td>{{ $item['product']->price }} Ft</td>
                                 <td> <input class="col-3 text-center" type="number" name="items[{{ $key }}][qtty]"
                                         value="{{ $item['qtty'] }}" min="1"></td>
@@ -67,7 +68,7 @@
                                 $total += $item['subtotal'];
                             @endphp
                         @endforeach
-                 
+
                 </form>
 
 
@@ -93,7 +94,7 @@
             @endif
 
             </table>
-        </form>
+            </form>
         </div>
     </div>
 

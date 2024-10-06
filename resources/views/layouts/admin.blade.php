@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@1,6..96&family=Cinzel+Decorative&family=Manrope:wght@200..800&family=MedievalSharp&family=MonteCarlo&family=Playfair+Display&family=Poppins:wght@100&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
+    
     <script src="{{ asset('/js/jquery.js') }}"></script>
     <title>@yield('title')</title>
 </head>

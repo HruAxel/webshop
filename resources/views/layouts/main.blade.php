@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <script src="https://kit.fontawesome.com/752f353f64.js" crossorigin="anonymous"></script>
     <script src="{{ asset('/js/jquery.js') }}"></script>
+    
     <title>@yield('title')</title>
 </head>
 
